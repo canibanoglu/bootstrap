@@ -224,27 +224,5 @@ $(function () {
     dropdown.click()
     $(document.body).click()
   })
-  
-  test('should not handle the keydown event if data-toggle="dropdown" attribute is not present', function() {
-	var dropdownHTML = '<ul class="tabs">' +
-        '<li class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" role="listbox">Dropdown</a>' +
-        '<ul class="dropdown-menu">' +
-        '<li><a href="#">Secondary link</a></li>' +
-        '<li><a href="#">Something else here</a></li>' +
-        '<li class="divider"></li>' +
-        '<li><a href="#">Another link</a></li>' +
-        '</ul>' +
-        '</li>' +
-        '</ul>'
-    var dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[role="listbox"]').bootstrapDropdown()
-	var press = jQuery.Event("keydown");
-	press.ctrlKey = false;
-	press.keyCode = 40;
-	press.which = 40;
-	dropdown.trigger(press);
-	
-	ok(!dropdown.parent('.dropdown').hasClass('open'), 'didn\'t handle the keydown event')
-  })
 
 })

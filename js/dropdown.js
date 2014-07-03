@@ -54,16 +54,16 @@
 
   Dropdown.prototype.keydown = function (e) {
     if (!/(38|40|27)/.test(e.keyCode)) return
-	
+
     var $this = $(this)
 
     e.preventDefault()
     e.stopPropagation()
-	
-	var $parent  = getParent($this)
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
-	
-    if ($this.is('.disabled, :disabled') || $parent.find(toggle).length === 0) return
 
     if (!isActive || (isActive && e.keyCode == 27)) {
       if (e.which == 27) $parent.find(toggle).trigger('focus')
